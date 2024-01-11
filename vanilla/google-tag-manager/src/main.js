@@ -36,6 +36,7 @@ async function init() {
     [Plugin.EVENT_INVITE_ACCEPTED]: 'invite-accepted',
     /**
      * This event has an additional payload, it can be used to track user progress.
+     * See https://{YOUR-ENTERPRISE-NAME}.plugin.skedify.io/{YOUR-ENTERPRISE-NAME}/docs/docs/guides/events#event_step_shown
       interface StepShownPayload {
         step: "office" | "timetable" | "customer" | "questions" | "subject" | "employee" | "meeting-type";
         employee?: { id: string; firstName: string | null; lastName: string | null };
