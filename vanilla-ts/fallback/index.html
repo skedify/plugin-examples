@@ -1,13 +1,24 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
+    <title>Engage Plugin - Vanilla - Fallback</title>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
+    <div
+      class="pexip-engage-plugin"
+      data-pexip-language="nl-BE"
+      data-pexip-customer-timezone="Europe/Brussels"
+    >
+      <!-- Insert a fallback for when the plugin fails here, for example: -->
+      <p class="enterprise-fallback">
+        Unfortunately something went wrong with the booking module. Try again in
+        a couple of minutes or contacts us through
+        <a href="mailto:contact@example.com">e-mail</a> or by phone
+        <a href="tel:0032800000000">0800 00 00 00</a>.
+      </p>
+    </div>
   </body>
 </html>
