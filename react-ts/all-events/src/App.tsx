@@ -6,8 +6,11 @@ import {
   PexipEngagePlugin,
   PEXIP_ENGAGE_PLUGIN_EVENT,
   type PluginInstance,
-} from '@pexip-engage-public/plugin-react';
-import  { scriptSrc } from './pexip-engage-script.ts';
+} from "@pexip-engage-public/plugin-react";
+
+// Fill in your plugin source here, it will be in the following structure:
+// https://{YOUR-ENTERPRISE-NAME}.plugin.skedify.io/{YOUR-ENTERPRISE-NAME}/pexip-engage-plugin.js
+export const PLUGIN_SCRIPT_SRC = "<YOUR_PLUGIN_SCRIPT_SRC>";
 
 function Playground() {
   const [events, setEvents] = useState<string[]>([]);
@@ -20,7 +23,7 @@ function Playground() {
 
       if (event instanceof CustomEvent) {
         const { instance, ...detail } = event.detail;
-        const code = JSON.stringify({ timeStamp: event.timeStamp, detail, source: 'global' });
+        const code = JSON.stringify({ timeStamp: event.timeStamp, detail, source: "global" });
 
         if (event.detail.type === window.PexipEngage?.Plugin.EVENT_CREATION) {
           // New plugin instance, clear events from previous instances
@@ -40,7 +43,7 @@ function Playground() {
   useEffect(() => {
     instance?.addEventListener((event) => {
       const { instance, ...detail } = event.detail;
-      const code = JSON.stringify({ timeStamp: event.timeStamp, detail, source: 'instance' });
+      const code = JSON.stringify({ timeStamp: event.timeStamp, detail, source: "instance" });
 
       setEvents((events) => [...events, code]);
     });
@@ -57,7 +60,7 @@ function Playground() {
   );
 }
 
-const defaultConfig: PexipEngagePluginContextProps = { scriptSrc };
+const defaultConfig: PexipEngagePluginContextProps = { scriptSrc: PLUGIN_SCRIPT_SRC };
 
 export default function App() {
   return (
