@@ -6,9 +6,8 @@ import {
   PluginInstance,
 } from '@pexip-engage-public/plugin-react';
 
-// Fill in your plugin source here, it will be in the following structure:
-// https://{YOUR-ENTERPRISE-NAME}.plugin.skedify.io/{YOUR-ENTERPRISE-NAME}/pexip-engage-plugin.js
-export const PLUGIN_SCRIPT_SRC = "<YOUR_PLUGIN_SCRIPT_SRC>";
+// Replace the placeholder values with your actual enterprise, and remove the `<>` brackets:
+export const PLUGIN_SCRIPT_SRC = "<https://{YOUR-ENTERPRISE-NAME}.plugin.skedify.io/{YOUR-ENTERPRISE-NAME}/pexip-engage-plugin.js>";
 
 
 declare global {
