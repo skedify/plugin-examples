@@ -8,7 +8,16 @@ import { scriptSrc } from './pexip-engage-script.ts';
 function Playground() {
   return (
     <div>
-      <PexipEngagePlugin />
+      <PexipEngagePlugin
+        scriptSrc="http://failing-plugin-url"
+        fallback={
+          <p className="enterprise-fallback">
+            Unfortunately something went wrong with the booking module. Try again in a couple of
+            minutes or contacts us through <a href="mailto:contact@example.com">e-mail</a> or by
+            phone <a href="tel:0032800000000">0800 00 00 00</a>.
+          </p>
+        }
+      />
     </div>
   );
 }

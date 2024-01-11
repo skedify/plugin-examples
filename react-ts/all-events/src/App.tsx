@@ -1,35 +1,69 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { useEffect, useState } from "react";
+import {
+  PexipEngagePluginContextProps,
+  PexipEngagePluginProvider,
+  PexipEngagePlugin,
+  PEXIP_ENGAGE_PLUGIN_EVENT,
+  type PluginInstance,
+} from '@pexip-engage-public/plugin-react';
+import  { scriptSrc } from './pexip-engage-script.ts';
 
-function App() {
-  const [count, setCount] = useState(0)
+function Playground() {
+  const [events, setEvents] = useState<string[]>([]);
+  const [instance, setInstance] = useState<PluginInstance | null>(null);
+
+  // Global events
+  useEffect(() => {
+    function listener(event: Event) {
+      console.log(event);
+
+      if (event instanceof CustomEvent) {
+        const { instance, ...detail } = event.detail;
+        const code = JSON.stringify({ timeStamp: event.timeStamp, detail, source: 'global' });
+
+        if (event.detail.type === window.PexipEngage?.Plugin.EVENT_CREATION) {
+          // New plugin instance, clear events from previous instances
+          setEvents([code]);
+        } else {
+          setEvents((events) => [...events, code]);
+        }
+      }
+    }
+
+    document.addEventListener(PEXIP_ENGAGE_PLUGIN_EVENT, listener);
+
+    return () => document.removeEventListener(PEXIP_ENGAGE_PLUGIN_EVENT, listener);
+  }, []);
+
+  // Instance events
+  useEffect(() => {
+    instance?.addEventListener((event) => {
+      const { instance, ...detail } = event.detail;
+      const code = JSON.stringify({ timeStamp: event.timeStamp, detail, source: 'instance' });
+
+      setEvents((events) => [...events, code]);
+    });
+  }, [instance]);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <p>Events:</p>
+      {events.map((event) => (
+        <code key={event}>{event}</code>
+      ))}
+      <PexipEngagePlugin onInstanceChange={setInstance} />
+    </div>
+  );
 }
 
-export default App
+const defaultConfig: PexipEngagePluginContextProps = { scriptSrc };
+
+export default function App() {
+  return (
+    <PexipEngagePluginProvider value={defaultConfig}>
+      {/* All <PexipEngagePlugin /> components will now merge their own passed configuration with the defaultConfig value */}
+      <Playground />
+    </PexipEngagePluginProvider>
+  );
+}
