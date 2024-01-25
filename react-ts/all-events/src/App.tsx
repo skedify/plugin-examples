@@ -9,7 +9,7 @@ import {
 } from "@pexip-engage-public/plugin-react";
 
 // Replace the placeholder values with your actual enterprise, and remove the `<>` brackets:
-export const PLUGIN_SCRIPT_SRC = "<https://{YOUR-ENTERPRISE-NAME}.plugin.skedify.io/{YOUR-ENTERPRISE-NAME}/pexip-engage-plugin.js>";
+export const PLUGIN_SCRIPT_SRC = "<https://plugin.pexipengage.com/{YOUR-ENTERPRISE-NAME}/pexip-engage-plugin.js>";
 
 function Playground() {
   const [events, setEvents] = useState<string[]>([]);
@@ -41,8 +41,16 @@ function Playground() {
   // Instance events
   useEffect(() => {
     instance?.addEventListener((event) => {
-      const { instance, ...detail } = event.detail;
-      const code = JSON.stringify({ timeStamp: event.timeStamp, detail, source: "instance" });
+      // const { instance, ...detail } = event.detail;
+      let code = '';
+
+      if("instance" in event.detail) {
+        const { instance, ...detail } = event.detail;
+        code = JSON.stringify({ timeStamp: event.timeStamp, detail, source: "instance" });
+      } else {
+        code = JSON.stringify({ timeStamp: event.timeStamp, detail: event.detail, source: "instance" });
+      }
+
 
       setEvents((events) => [...events, code]);
     });
@@ -54,12 +62,12 @@ function Playground() {
       {events.map((event) => (
         <code key={event}>{event}</code>
       ))}
-      <PexipEngagePlugin onInstanceChange={setInstance} />
+      <PexipEngagePlugin onInstanceChange={setInstance} version="1.0.0" />
     </div>
   );
 }
 
-const defaultConfig: PexipEngagePluginContextProps = { scriptSrc: PLUGIN_SCRIPT_SRC };
+const defaultConfig: PexipEngagePluginContextProps = { scriptSrc: PLUGIN_SCRIPT_SRC, version: "1.0.0" };
 
 export default function App() {
   return (

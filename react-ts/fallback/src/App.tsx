@@ -5,12 +5,14 @@ import {
 } from "@pexip-engage-public/plugin-react";
 
 // Replace the placeholder values with your actual enterprise, and remove the `<>` brackets:
-export const PLUGIN_SCRIPT_SRC = "<https://{YOUR-ENTERPRISE-NAME}.plugin.skedify.io/{YOUR-ENTERPRISE-NAME}/pexip-engage-plugin.js>";
+export const PLUGIN_SCRIPT_SRC =
+  "<https://plugin.pexipengage.com/{YOUR-ENTERPRISE-NAME}/pexip-engage-plugin.js>";
 
 function Playground() {
   return (
     <div>
       <PexipEngagePlugin
+        version="1.0.0"
         // This will override the url above, making it fail on purpose.
         scriptSrc="http://failing-plugin-url"
         fallback={
@@ -25,7 +27,10 @@ function Playground() {
   );
 }
 
-const defaultConfig: PexipEngagePluginContextProps = { scriptSrc: PLUGIN_SCRIPT_SRC };
+const defaultConfig: PexipEngagePluginContextProps = {
+  scriptSrc: PLUGIN_SCRIPT_SRC,
+  version: "1.0.0",
+};
 
 export default function App() {
   return (

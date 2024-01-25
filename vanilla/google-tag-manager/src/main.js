@@ -13,7 +13,7 @@ async function getInstance() {
   } else {
     return new Promise((resolve) => {
       document.addEventListener(
-        'SkedifyPluginEvent',
+        'PexipEngagePluginEvent',
         () => resolve(getGlobal().awaitFirstInstance()),
         { once: true }
       );

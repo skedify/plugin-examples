@@ -3,7 +3,7 @@ import './style.css';
 let events = [];
 
 console.log('Setting up listeners..');
-document.addEventListener('SkedifyPluginEvent', documentEventListener);
+document.addEventListener('PexipEngagePluginEvent', documentEventListener);
 
 function documentEventListener(documentEvent) {
   // once this listener is called, we can assume the global to filter events.

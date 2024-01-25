@@ -1,14 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import {
   PexipEngagePluginContextProps,
   PexipEngagePluginProvider,
   PexipEngagePlugin,
   PluginInstance,
-} from '@pexip-engage-public/plugin-react';
+} from "@pexip-engage-public/plugin-react";
 
 // Replace the placeholder values with your actual enterprise, and remove the `<>` brackets:
-export const PLUGIN_SCRIPT_SRC = "<https://{YOUR-ENTERPRISE-NAME}.plugin.skedify.io/{YOUR-ENTERPRISE-NAME}/pexip-engage-plugin.js>";
-
+export const PLUGIN_SCRIPT_SRC =
+  "<https://plugin.pexipengage.com/{YOUR-ENTERPRISE-NAME}/pexip-engage-plugin.js>";
 
 declare global {
   interface Window {
@@ -23,7 +23,7 @@ function Playground() {
     instance?.addEventListener((event) => {
       console.log({ event });
       switch (event.detail.type) {
-        case 'STEP_SHOWN': {
+        case "STEP_SHOWN": {
           /**
           * This event has an additional payload, it can be used to track user progress.
           * See https://{YOUR-ENTERPRISE-NAME}.plugin.skedify.io/{YOUR-ENTERPRISE-NAME}/docs/docs/guides/events#event_step_shown
@@ -54,12 +54,15 @@ function Playground() {
 
   return (
     <div>
-      <PexipEngagePlugin onInstanceChange={setInstance} />
+      <PexipEngagePlugin onInstanceChange={setInstance} version="1.0.0" />
     </div>
   );
 }
 
-const defaultConfig: PexipEngagePluginContextProps = { scriptSrc: PLUGIN_SCRIPT_SRC };
+const defaultConfig: PexipEngagePluginContextProps = {
+  scriptSrc: PLUGIN_SCRIPT_SRC,
+  version: "1.0.0",
+};
 
 export default function App() {
   return (
