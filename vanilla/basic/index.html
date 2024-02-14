@@ -10,8 +10,8 @@
       Afterwards take a look at src/main.js to see the example!
     -->
     <script type="text/javascript">
-      (function(i,a){typeof document>"u"||(i.PexipEngage=i.PexipEngage||function(){let e=i.PexipEngage;e.q=e.q||[];let g=arguments;if(g[0]==="init"){if(e.loaded)return;let t=i.document,n=t.head.appendChild(t.createElement("script"));n.defer=!0,n.async=!0,n.src=a,e.loaded=!0;return}return new Promise((t,n)=>e.q.push([g,t,n]))});})
-      (window,"https://plugin.pexipengage.com/{YOUR-ENTERPRISE-NAME}/pexip-engage-plugin.js");
+      (function(e,r,s){if(typeof r>"u")return;let n="PexipEngage",a="script";e[n]=e[n]||function(){e[n].q=e[n].q||[];let g=arguments;if(g[0]==="init"){if(e[n].loaded)return;let i=r.getElementsByTagName(a)[0],t=r.createElement(a);t.defer=!0,t.async=!0,t.src=s,e[n].loaded=!0,i?.parentNode?.insertBefore(t,i);return}return new Promise((i,t)=>e[n].q.push([g,i,t]))};})
+      (window,document,"https://plugin.development.pexipengage.com/{YOUR-ENTERPRISE-NAME}/pexip-engage-plugin.js");
       window.PexipEngage("init");
     </script>
   </head>
