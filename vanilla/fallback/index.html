@@ -5,6 +5,12 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Engage Plugin - Vanilla - Fallback</title>
+    <!-- Intentionally using an invalid URL here -->
+    <script type="text/javascript">
+      (function(i,a){typeof document>"u"||(i.PexipEngage=i.PexipEngage||function(){let e=i.PexipEngage;e.q=e.q||[];let g=arguments;if(g[0]==="init"){if(e.loaded)return;let t=i.document,n=t.head.appendChild(t.createElement("script"));n.defer=!0,n.async=!0,n.src=a,e.loaded=!0;return}return new Promise((t,n)=>e.q.push([g,t,n]))});})
+      (window,"https://failing-plugin-url");
+      window.PexipEngage("init");
+    </script>
   </head>
   <body>
     <div
@@ -20,9 +26,5 @@
         <a href="tel:0032800000000">0800 00 00 00</a>.
       </p>
     </div>
-
-
-    <!-- Intentionally using an invalid URL here -->
-    <script async defer src="https://failing-plugin-url"></script>
   </body>
 </html>

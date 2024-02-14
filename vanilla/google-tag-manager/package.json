@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "vite": "^5.0.8"
+    "@pexip-engage-public/plugin": "1.0.16-canary-20240214081155",
+    "vite": "^5.1.1"
   }
 }

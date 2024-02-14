@@ -19,6 +19,15 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Engage Plugin - Vanilla - Google Tag Manager</title>
+    <!--
+      Replace the placeholder values with your actual enterprise, and remove the `<>` brackets:
+      Afterwards take a look at src/main.js to see the example!
+    -->
+    <script type="text/javascript">
+      (function(i,a){typeof document>"u"||(i.PexipEngage=i.PexipEngage||function(){let e=i.PexipEngage;e.q=e.q||[];let g=arguments;if(g[0]==="init"){if(e.loaded)return;let t=i.document,n=t.head.appendChild(t.createElement("script"));n.defer=!0,n.async=!0,n.src=a,e.loaded=!0;return}return new Promise((t,n)=>e.q.push([g,t,n]))});})
+      (window,"https://plugin.pexipengage.com/{YOUR-ENTERPRISE-NAME}/pexip-engage-plugin.js");
+      window.PexipEngage("init");
+    </script>
   </head>
   <body>
     <div id="app"></div>
@@ -28,15 +37,5 @@
       data-pexip-customer-timezone="Europe/Brussels"
     ></div>
     <script type="module" src="/src/main.js"></script>
-    <!--
-      Replace the placeholder values with your actual enterprise, and remove the `<>` brackets:
-      https://plugin.pexipengage.com/{YOUR-ENTERPRISE-NAME}/pexip-engage-plugin.js
-      Afterwards take a look at src/main.js to see the example!
-    -->
-    <script
-      async
-      defer
-      src="<https://plugin.pexipengage.com/{YOUR-ENTERPRISE-NAME}/pexip-engage-plugin.js>"
-    ></script>
   </body>
 </html>
