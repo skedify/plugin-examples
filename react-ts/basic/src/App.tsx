@@ -11,7 +11,7 @@ export const PLUGIN_SCRIPT_SRC =
 function Playground() {
   return (
     <div>
-      <PexipEngagePlugin version="1.0.0" />
+      <PexipEngagePlugin />
     </div>
   );
 }

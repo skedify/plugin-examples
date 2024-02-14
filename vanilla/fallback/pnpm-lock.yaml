@@ -6,8 +6,8 @@ settings:
 
 devDependencies:
   '@pexip-engage-public/plugin':
-    specifier: 1.0.16-canary-20240214081155
-    version: 1.0.16-canary-20240214081155
+    specifier: 1.0.16-canary-20240214084919
+    version: 1.0.16-canary-20240214084919
   vite:
     specifier: ^5.1.1
     version: 5.1.1
@@ -240,8 +240,8 @@ packages:
       - encoding
     dev: true
 
-  /@pexip-engage-public/plugin@1.0.16-canary-20240214081155:
-    resolution: {integrity: sha512-o30JCXdXS/309sOhAa8UsEahdm108RiQcCRDqnRENuuwQXEhhbsIsBG/GxPsoyM3qErUUWEX6MjAjN8zQwNnBQ==}
+  /@pexip-engage-public/plugin@1.0.16-canary-20240214084919:
+    resolution: {integrity: sha512-HeZh5s2kaLGedDvHA4IaeUxC5+haqlmmlc/hJoAOUKTE5o1J+zvSnbVzOnABCCOxodDuCT39ZmYTDME1+vTrFg==}
     dependencies:
       '@pexip-engage-public/graphql': 1.0.10
       iframe-resizer: 4.3.9

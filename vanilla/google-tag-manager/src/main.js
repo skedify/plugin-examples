@@ -19,7 +19,7 @@ async function init() {
       interface StepShownPayload {
         step: "office" | "timetable" | "customer" | "questions" | "subject" | "employee" | "meeting-type";
         employee?: { id: string; firstName: string | null; lastName: string | null };
-        meetingType?: "video" | "phone" | "on_location" | "office";
+        meetingType?: "VIDEO" | "PHONE" | "ON_LOCATION" | "OFFICE";
         office?: { id: string; title: string };
         subject?: { id: string; title: string };
       }

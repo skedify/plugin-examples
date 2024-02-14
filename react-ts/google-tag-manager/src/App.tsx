@@ -20,18 +20,17 @@ function Playground() {
   const [instance, setInstance] = useState<PluginInstance | null>(null);
 
   useEffect(() => {
-    instance?.addEventListener((event) => {
+    const unsubscribe = instance?.addEventListener((event) => {
       console.log({ event });
       switch (event.detail.type) {
         case "STEP_SHOWN": {
           /**
           * This event has an additional payload, it can be used to track user progress.
           * See https://{YOUR-ENTERPRISE-NAME}.plugin.skedify.io/{YOUR-ENTERPRISE-NAME}/docs/docs/guides/events#event_step_shown
-
             interface StepShownPayload {
               step: "office" | "timetable" | "customer" | "questions" | "subject" | "employee" | "meeting-type";
               employee?: { id: string; firstName: string | null; lastName: string | null };
-              meetingType?: "video" | "phone" | "on_location" | "office";
+              meetingType?: "VIDEO" | "PHONE" | "ON_LOCATION" | "OFFICE";
               office?: { id: string; title: string };
               subject?: { id: string; title: string };
             }
@@ -50,11 +49,13 @@ function Playground() {
         }
       }
     });
+
+    return () => unsubscribe?.();
   }, [instance]);
 
   return (
     <div>
-      <PexipEngagePlugin onInstanceChange={setInstance} version="1.0.0" />
+      <PexipEngagePlugin onInstanceChange={setInstance} />
     </div>
   );
 }

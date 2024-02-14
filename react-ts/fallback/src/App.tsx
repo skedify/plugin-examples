@@ -12,7 +12,6 @@ function Playground() {
   return (
     <div>
       <PexipEngagePlugin
-        version="1.0.0"
         // This will override the url above, making it fail on purpose.
         scriptSrc="http://failing-plugin-url"
         fallback={
