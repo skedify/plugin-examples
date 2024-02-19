@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@pexip-engage-public/plugin-react':
-    specifier: ^2.0.17
-    version: 2.0.17(react@18.2.0)
+    specifier: ^2.0.18
+    version: 2.0.18(react@18.2.0)
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -612,20 +612,20 @@ packages:
       - encoding
     dev: false
 
-  /@pexip-engage-public/plugin-react@2.0.17(react@18.2.0):
-    resolution: {integrity: sha512-/6wc2j16/B26W5O4GE+kO5eJXWXYmoliH5U3TnXwIX2Tr2b88jGVmAW7dhwtUenfxsAAnyxSJ9npakc2/TKkmA==}
+  /@pexip-engage-public/plugin-react@2.0.18(react@18.2.0):
+    resolution: {integrity: sha512-LBf4L1srrt3GvWDxCeQverwgPaai15u8qnYu7TfRMAiFxjJZJ0NppU5NTCx/9/5xISSbq4tdiDa4Dxxdom74mQ==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
-      '@pexip-engage-public/plugin': 1.0.17
+      '@pexip-engage-public/plugin': 1.0.18
       deepmerge: 4.3.1
       react: 18.2.0
     transitivePeerDependencies:
       - encoding
     dev: false
 
-  /@pexip-engage-public/plugin@1.0.17:
-    resolution: {integrity: sha512-OV4qH/ktZxe0G6PP1cHmmgGC5xqnStiYNFXHWF0xJ3++4YuuVosf9vkN30PvDRKt8fFOOhU1IShulr85nX9cgg==}
+  /@pexip-engage-public/plugin@1.0.18:
+    resolution: {integrity: sha512-PJELrXZAEmvb5sGM9lSQp/1bRJwe8bW2tQOtg12+pBfk/UI2fgC8Pvfvc7GuPYcqvcV4a6Vaax2P4FkR9lv0yw==}
     dependencies:
       '@pexip-engage-public/graphql': 1.0.10
       iframe-resizer: 4.3.9
