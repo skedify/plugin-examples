@@ -6,7 +6,7 @@ settings:
 
 dependencies:
   '@pexip-engage-public/plugin-react':
-    specifier: 2.0.17
+    specifier: ^2.0.17
     version: 2.0.17(react@18.2.0)
   react:
     specifier: ^18.2.0
