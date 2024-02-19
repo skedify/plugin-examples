@@ -4,7 +4,6 @@ import {
   PexipEngagePluginContextProps,
   PexipEngagePluginProvider,
   PexipEngagePlugin,
-  PEXIP_ENGAGE_PLUGIN_EVENT,
   type PluginInstance,
 } from "@pexip-engage-public/plugin-react";
 
@@ -15,33 +14,9 @@ function Playground() {
   const [events, setEvents] = useState<string[]>([]);
   const [instance, setInstance] = useState<PluginInstance | null>(null);
 
-  // Global events
-  useEffect(() => {
-    function listener(event: Event) {
-      console.log(event);
-
-      if (event instanceof CustomEvent) {
-        const { instance, ...detail } = event.detail;
-        const code = JSON.stringify({ timeStamp: event.timeStamp, detail, source: "global" });
-
-        if (event.detail.type === window.PexipEngage?.Plugin.EVENT_CREATION) {
-          // New plugin instance, clear events from previous instances
-          setEvents([code]);
-        } else {
-          setEvents((events) => [...events, code]);
-        }
-      }
-    }
-
-    document.addEventListener(PEXIP_ENGAGE_PLUGIN_EVENT, listener);
-
-    return () => document.removeEventListener(PEXIP_ENGAGE_PLUGIN_EVENT, listener);
-  }, []);
-
   // Instance events
   useEffect(() => {
-    instance?.addEventListener((event) => {
-      // const { instance, ...detail } = event.detail;
+    const unsubscribe = instance?.addEventListener((event) => {
       let code = '';
 
       if("instance" in event.detail) {
@@ -54,6 +29,8 @@ function Playground() {
 
       setEvents((events) => [...events, code]);
     });
+
+    return () => unsubscribe?.();
   }, [instance]);
 
   return (
@@ -62,7 +39,7 @@ function Playground() {
       {events.map((event) => (
         <code key={event}>{event}</code>
       ))}
-      <PexipEngagePlugin onInstanceChange={setInstance} version="1.0.0" />
+      <PexipEngagePlugin onInstanceChange={setInstance} />
     </div>
   );
 }

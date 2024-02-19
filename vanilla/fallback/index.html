@@ -5,12 +5,19 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Engage Plugin - Vanilla - Fallback</title>
+    <!-- Intentionally using an invalid URL here -->
+    <script type="text/javascript">
+      (function(e,r,s){if(typeof r>"u")return;let n="PexipEngage",a="script";e[n]=e[n]||function(){e[n].q=e[n].q||[];let g=arguments;if(g[0]==="init"){if(e[n].loaded)return;let i=r.getElementsByTagName(a)[0],t=r.createElement(a);t.defer=!0,t.async=!0,t.src=s,e[n].loaded=!0,i?.parentNode?.insertBefore(t,i);return}return new Promise((i,t)=>e[n].q.push([g,i,t]))};})
+      (window,document,"https://failing-plugin-url");
+      window.PexipEngage("init");
+    </script>
   </head>
   <body>
     <div
       class="pexip-engage-plugin"
       data-pexip-language="nl-BE"
       data-pexip-customer-timezone="Europe/Brussels"
+      data-pexip-version="1.0.0"
     >
       <!-- Insert a fallback for when the plugin fails here, for example: -->
       <p class="enterprise-fallback">
@@ -20,9 +27,5 @@
         <a href="tel:0032800000000">0800 00 00 00</a>.
       </p>
     </div>
-
-
-    <!-- Intentionally using an invalid URL here -->
-    <script async defer src="https://failing-plugin-url"></script>
   </body>
 </html>

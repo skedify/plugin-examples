@@ -19,7 +19,7 @@ function Playground() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pluginCss, instance]);
 
-  return <PexipEngagePlugin version="1.0.0" onInstanceChange={setInstance} />;
+  return <PexipEngagePlugin onInstanceChange={setInstance} />;
 }
 
 const defaultConfig: PexipEngagePluginContextProps = { scriptSrc: PLUGIN_SCRIPT_SRC, version: "1.0.0" };
